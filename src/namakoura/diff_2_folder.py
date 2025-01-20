@@ -33,7 +33,24 @@ print("unmodified file num:", len(unmodified_file))
 
 print("="*15)
 
-feature_display=True
+feature_display=False
 feature_copy_to_new_folder=True
 
-# for i in modified_file
+def display():
+    for i in modified_file:
+        print(i)
+    
+def copy_to_new_folder():
+    import shutil
+    target_folder=os.path.join(path_2,"..","modified")
+    os.mkdir(target_folder)
+    for i in modified_file:
+        shutil.copyfile(src=os.path.join(path_2,i),dst=os.path.join(target_folder,i))
+    
+if feature_display:
+    display()
+
+if feature_copy_to_new_folder:
+    copy_to_new_folder()
+
+print("END")
